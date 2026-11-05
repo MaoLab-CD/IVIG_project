@@ -1,0 +1,17 @@
+feature,in_first10,in_original14,category
+ALB,False,True,original14_only
+AST,True,False,first10_only
+CRP,True,False,first10_only
+Ca,True,True,both
+DigeSys,False,True,original14_only
+FeverDay,True,True,both
+IVIGDay,True,True,both
+LabTestDay,True,True,both
+Limbs,True,True,both
+Na,True,True,both
+P,False,True,original14_only
+RBC,False,True,original14_only
+RDW-CV,False,True,original14_only
+Rash,True,True,both
+RespSys,False,True,original14_only
+TB,True,True,both

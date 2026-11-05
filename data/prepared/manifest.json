@@ -1,0 +1,170 @@
+{
+  "description": "De-identified prepared datasets for the reviewer-facing main analysis. No patient identifiers; row_id is a sequential row number only.",
+  "label": "Label: 1 = IVIG-resistant (KD), 0 = IVIG-responsive.",
+  "panels": {
+    "a_features": [
+      "FeverDay",
+      "LabTestDay",
+      "IVIGDay",
+      "Sex",
+      "Age",
+      "Conj",
+      "Lips",
+      "Limbs",
+      "Rash",
+      "LymphSym",
+      "DigeSys",
+      "NervSys",
+      "RespSys",
+      "MuscSys",
+      "UrineR",
+      "WBC",
+      "Lym",
+      "ANC",
+      "RBC",
+      "HGB",
+      "PLT",
+      "HCT",
+      "RDW-CV",
+      "RDW-SD",
+      "PDW",
+      "MPV",
+      "P-LCR",
+      "PCT",
+      "CRP",
+      "ESR",
+      "ALT",
+      "AST",
+      "TB",
+      "ALB",
+      "UN",
+      "Cr",
+      "K",
+      "Na",
+      "DBIL",
+      "IDIL",
+      "GLB",
+      "r-GT",
+      "LDH",
+      "P",
+      "Cl",
+      "Ca",
+      "Mg"
+    ],
+    "b_features": [
+      "FeverDay",
+      "LabTestDay",
+      "IVIGDay",
+      "Sex",
+      "Age",
+      "Conj",
+      "Lips",
+      "Limbs",
+      "Rash",
+      "LymphSym",
+      "DigeSys",
+      "NervSys",
+      "RespSys",
+      "MuscSys",
+      "UrineR",
+      "WBC",
+      "Lym",
+      "ANC",
+      "RBC",
+      "HGB",
+      "PLT",
+      "HCT",
+      "RDW-CV",
+      "RDW-SD",
+      "PDW",
+      "MPV",
+      "P-LCR",
+      "PCT",
+      "CRP",
+      "ESR",
+      "ALT",
+      "AST",
+      "TB",
+      "ALB",
+      "UN",
+      "Cr",
+      "K",
+      "Na",
+      "DBIL",
+      "IDIL",
+      "GLB",
+      "r-GT",
+      "LDH",
+      "P",
+      "Cl",
+      "Ca",
+      "Mg",
+      "ALB-dNLR",
+      "ALBI",
+      "BA",
+      "CALLY",
+      "CAR",
+      "CLI",
+      "L1",
+      "N1",
+      "PVR",
+      "RPR"
+    ],
+    "n_a": 47,
+    "n_b": 57
+  },
+  "datasets": {
+    "original_train": {
+      "n": 1356,
+      "n_resistant": 172,
+      "n_responsive": 1184,
+      "files": [
+        "original_train_panel_a.csv",
+        "original_train_panel_b.csv"
+      ]
+    },
+    "smote_train": {
+      "n": 2368,
+      "n_resistant": 1184,
+      "n_responsive": 1184,
+      "files": [
+        "smote_train_panel_a.csv",
+        "smote_train_panel_b.csv"
+      ],
+      "note": "Rebalanced 2026-11-04: 100 of the generated IVIG-resistant records were discarded (seed 20261104) to restore the prespecified 1,184:1,184 design. Empirical records untouched. Synthetic and SPA sets were generated before this correction and were not regenerated."
+    },
+    "synthetic_train": {
+      "n": 9568,
+      "n_resistant": 4322,
+      "n_responsive": 5246,
+      "files": [
+        "synthetic_train_panel_a.csv",
+        "synthetic_train_panel_b.csv"
+      ]
+    },
+    "spa_train": {
+      "n": 5993,
+      "n_resistant": 3307,
+      "n_responsive": 2686,
+      "files": [
+        "spa_train_panel_a.csv",
+        "spa_train_panel_b.csv"
+      ]
+    },
+    "validation": {
+      "n": 587,
+      "n_resistant": 78,
+      "n_responsive": 509,
+      "files": [
+        "validation_panel_a.csv",
+        "validation_panel_b.csv"
+      ]
+    }
+  },
+  "source": "2025 retained snapshots after unit repair, physiological plausibility filter, imputation (Ori/Val/SMOTE), and fractional day retention (Syn/SPA). See data_preparation.ipynb and tools/retained_data.py.",
+  "notes": [
+    "Syn: 9,568 rows; SPA: 5,993 rows; both keep fractional day variables.",
+    "Ori/SMOTE/Val use integer day variables and training-median imputation.",
+    "The validation partition is fixed (587 rows, 78 resistant) and must not be used for model selection."
+  ]
+}
