@@ -10,9 +10,8 @@ Code and de-identified data for the manuscript:
 >
 > *BMC Medical Informatics and Decision Making* — submitted, revision in progress.
 
-This repository is the reviewer-facing reproduction package. It contains the two analysis
-notebooks, the de-identified prepared datasets they read, and the two scripts that document how
-those datasets were produced.
+This repository contains the two analysis notebooks, the de-identified prepared datasets they
+read, and the scripts that produced those datasets.
 
 ---
 
@@ -21,7 +20,7 @@ those datasets were produced.
 | Path | What it is |
 | :--- | :--- |
 | [`kd_ivig_analysis.ipynb`](kd_ivig_analysis.ipynb) | Main notebook. Reads only `data/prepared/`. Recomputes the model benchmark (Figure 2) and the SPA threshold-sensitivity heatmap, then displays the stored result tables and figures for the downstream analyses (feature selection, Table 1, SHAP interactions, partial dependence, extreme-score table). |
-| [`data_preparation.ipynb`](data_preparation.ipynb) | Provenance notebook, **code only, no outputs**. Documents cleaning, imputation, the patient-level split, Tabula synthesis and SPA filtering. Not required to run the main notebook. |
+| [`data_preparation.ipynb`](data_preparation.ipynb) | The pipeline that produced `data/prepared/`: cleaning, imputation, the patient-level split, Tabula synthesis and SPA filtering. |
 | [`data/prepared/`](data/prepared/) | De-identified prepared datasets: five splits × two feature panels, plus `manifest.json` and `README.md`. |
 | [`results/notebook/`](results/notebook/) | Result tables read by the main notebook: the benchmark table, the SPA grid, and the summary tables behind Figures 3–5 and Tables 1–2. |
 | [`figures/notebook/`](figures/notebook/) | Figure panels displayed by the main notebook. |
@@ -30,12 +29,10 @@ those datasets were produced.
 
 The benchmark and the SPA sensitivity grid are recomputed from `data/prepared/` when the notebook
 runs. The downstream panels are displayed from the stored tables in `results/notebook/`; those
-tables are the frozen outputs of the analysis reported in the manuscript, and the notebook marks
-the corresponding sections accordingly.
+tables are the outputs of the analysis reported in the manuscript.
 
-The two scripts in `tools/` are included so the preparation stage can be read end to end. They are
-**not runnable from this repository alone**: they read the raw 2025 snapshots and the trained
-Tabula checkpoints, neither of which is redistributed.
+The scripts in `tools/` implement the first two preparation stages. They read the raw 2025
+snapshots and the trained Tabula checkpoints, which are not part of this repository.
 
 ---
 
@@ -71,9 +68,9 @@ filtered only for physiologically impossible values, so plausible values outside
 range are retained. `data/prepared/manifest.json` records the feature lists, counts and the exact
 composition of each split.
 
-The source workbook and the trained Tabula checkpoints are not redistributed. Re-use of the data
-beyond reproduction of this study requires approval from the Ethics Committee of Sichuan
-University (No. 201312160121).
+The source workbook and the trained Tabula checkpoints are not included in this repository. Re-use
+of the data beyond reproduction of this study requires approval from the Ethics Committee of
+Sichuan University (No. 201312160121).
 
 ---
 
@@ -113,8 +110,9 @@ and five for the SPA sensitivity grid. `RUN_BENCHMARK` in the Part 1 cell contro
 leave it `True` to refit, or set it to `False` to redraw Figure 2 from the committed
 `results/notebook/figure2_benchmark.csv`.
 
-`data_preparation.ipynb` is deliberately not executed: it documents the code that produced
-`data/prepared/` rather than recomputing it, and its inputs are not redistributed.
+`data_preparation.ipynb` covers the stages that produced `data/prepared/`. Its inputs — the raw
+2025 snapshots and the Tabula checkpoints — are not part of this repository, so the prepared
+datasets are shipped ready to use.
 
 ---
 
